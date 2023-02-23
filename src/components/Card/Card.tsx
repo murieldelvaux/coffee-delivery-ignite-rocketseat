@@ -1,4 +1,4 @@
-import { ShoppingCartSimple, Trash } from "phosphor-react";
+import { ShoppingCartSimple, Tag, Trash } from "phosphor-react";
 import { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from "react";
 import ButtonCoffee from "../Button/Button";
 import { SelectItems } from "../Select/SelectItem/Select";
@@ -11,6 +11,8 @@ import {
   CardValueCoffe,
   CardWrapper,
   ImageCoffee,
+  TagCoffeeItem,
+  TagCoffeeWrapper,
 } from "./Card.styles";
 
 interface ICardCoffeeProps
@@ -18,7 +20,7 @@ interface ICardCoffeeProps
     ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
   > {
-  typeCoffe?:
+  typeCoffee?:
     | "Americano"
     | "Árabe"
     | "Café com Leite"
@@ -37,27 +39,34 @@ interface ICardCoffeeProps
   title?: string;
   description?: string;
   valueCoffee?: number;
+  tagCoffee?: Array<string>;
 }
 
 function CardCoffee({
-  typeCoffe,
+  typeCoffee,
   variant,
   title,
   description,
   valueCoffee,
+  tagCoffee,
   ...props
 }: ICardCoffeeProps) {
-  title = "Expresso Tradicional";
-  description = "O tradicional café feito com água quente e grãos moídos";
-  valueCoffee = 9.9;
-
   return (
     <CardWrapper variant={variant}>
       <ImageCoffee
         variant={variant}
-        src={`../../../public/Image/Type=${typeCoffe}.png`}
+        src={`../../../public/Image/Type=${typeCoffee}.png`}
       />
       <CardContent variant={variant}>
+        {variant === "Carrinho" ? (
+          ""
+        ) : (
+          <TagCoffeeWrapper>
+            {tagCoffee?.map((val, i) => (
+              <TagCoffeeItem key={val + i}>{val}</TagCoffeeItem>
+            ))}
+          </TagCoffeeWrapper>
+        )}
         <CardTitle variant={variant}>{title}</CardTitle>
         {variant === "Carrinho" ? "" : <CardText>{description}</CardText>}
         <CardBuy variant={variant}>
@@ -66,7 +75,7 @@ function CardCoffee({
               ""
             ) : (
               <CardValueCoffe>
-                R$<span>{valueCoffee.toPrecision(3).replace(".", ",")}</span>
+                R$<span>{valueCoffee?.toPrecision(3).replace(".", ",")}</span>
               </CardValueCoffe>
             )}
             <SelectItems />
@@ -85,7 +94,7 @@ function CardCoffee({
       </CardContent>
       {variant === "Carrinho" ? (
         <CardValueCoffe variant={variant}>
-          R$<span>{valueCoffee.toPrecision(3).replace(".", ",")}</span>
+          R$<span>{valueCoffee?.toPrecision(3).replace(".", ",")}</span>
         </CardValueCoffe>
       ) : (
         ""
