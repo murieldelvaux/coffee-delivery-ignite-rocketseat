@@ -27,7 +27,9 @@ function ButtonCoffee({
   console.log(number);
   return variant === "cart" ? (
     <ButtonContentCartNumber>
-      <ButtonCartNumber number={number}>{number}</ButtonCartNumber>
+      <ButtonCartNumber number={number}>
+        <p>{number}</p>
+      </ButtonCartNumber>
       <ButtonWrapper color={color} variant={variant} {...props}>
         {Icon}
         {props.children}

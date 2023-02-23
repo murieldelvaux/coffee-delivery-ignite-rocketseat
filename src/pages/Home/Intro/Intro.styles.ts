@@ -1,37 +1,20 @@
 import styled, { css } from "styled-components";
 
-export const HomeContainer = styled.div`
-  ${({ theme }) => css`
-    display: flex;
-    flex-wrap: wrap;
+export const IntroWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 5.75rem 0rem;
+  @media (max-width: 800px) {
     width: 100%;
-    background: ${theme.color.background};
-    padding: 2rem 10rem;
-    @media (max-width: 800px) {
-      align-items: center;
-      justify-content: center;
-
-      padding: 1rem;
-    }
-  `}
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
 `;
-export const HomeBannerWrapper = styled.div`
-  ${({ theme }) => css`
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    width: 100%;
-    background: ${theme.color.background};
-    @media (max-width: 800px) {
-      width: 100%;
-      align-items: center;
-      justify-content: center;
-      gap: 2rem;
-    }
-  `}
-`;
-export const HomeBannerContentWrapper = styled.div`
+export const IntroContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -46,7 +29,7 @@ export const HomeBannerContentWrapper = styled.div`
     justify-content: center;
   }
 `;
-export const HomeBannerContent = styled.div`
+export const IntroContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -54,7 +37,7 @@ export const HomeBannerContent = styled.div`
   flex-wrap: wrap;
   gap: 1rem;
 `;
-export const HomeBannerTitle = styled.h1`
+export const IntroTitle = styled.h1`
   ${({ theme }) => css`
     font-family: "Baloo 2";
     font-style: normal;
@@ -66,7 +49,7 @@ export const HomeBannerTitle = styled.h1`
     width: 100%;
   `}
 `;
-export const HomeBannerSubtitle = styled.h5`
+export const IntroSubtitle = styled.h5`
   ${({ theme }) => css`
     font-family: "Roboto";
     font-style: normal;
@@ -78,7 +61,7 @@ export const HomeBannerSubtitle = styled.h5`
     width: 100%;
   `}
 `;
-export const HomeBannerItemsWrapper = styled.div`
+export const IntroItemsWrapper = styled.div`
   ${({ theme }) => css`
     display: flex;
     justify-content: start;
@@ -92,11 +75,11 @@ export const HomeBannerItemsWrapper = styled.div`
   `}
 `;
 
-interface HomeBannerItemIconProps {
+interface IntroItemIconProps {
   backgroundColor: string;
 }
 
-export const HomeBannerItemIcon = styled.div<HomeBannerItemIconProps>`
+export const IntroItemIcon = styled.div<IntroItemIconProps>`
   ${({ theme, backgroundColor }) => css`
     display: flex;
     justify-content: center;
@@ -113,7 +96,7 @@ export const HomeBannerItemIcon = styled.div<HomeBannerItemIconProps>`
     }
   `}
 `;
-export const HomeBannerItems = styled.div`
+export const IntroItems = styled.div`
   ${({ theme }) => css`
     display: flex;
     justify-content: center;
@@ -131,7 +114,7 @@ export const HomeBannerItems = styled.div`
     }
   `}
 `;
-export const HomeBannerImage = styled.div`
+export const IntroImage = styled.div`
   ${({ theme }) => css`
     display: flex;
     justify-content: center;

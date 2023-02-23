@@ -56,7 +56,7 @@ export const CardTitle = styled.h1<ICardContent>`
 
     ${variant == "Catálogo" &&
     css`
-      font-family: ${theme.fonts.Baloo.family};
+      font-family: "Baloo 2";
       font-weight: ${theme.fonts.Baloo.bold};
       font-size: 20px;
     `}
@@ -116,7 +116,7 @@ export const CardValueCoffe = styled.p<ICardContent>`
     css`
       margin-top: 29px;
       span {
-        font-family: ${theme.fonts.Baloo.family};
+        font-family: "Baloo 2";
         font-weight: ${theme.fonts.Baloo.extraBold};
         font-size: 24px;
       }
@@ -143,5 +143,31 @@ export const ImageCoffee = styled.img<ICardContent>`
       width: 64px;
       height: 64px;
     `};
+  `}
+`;
+export const TagCoffeeWrapper = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 0.8rem;
+    gap: 0.25rem;
+  `}
+`;
+export const TagCoffeeItem = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem 0.5rem;
+    background-color: ${theme.color.yellow.light};
+    color: ${theme.color.yellow.dark};
+    border-radius: 6.25rem;
+    font-size: ${theme.fonts.Roboto.size.xxxs};
+    font-family: "Roboto";
+    font-weight: ${theme.fonts.Roboto.bold};
+    line-height: ${theme.fonts.Roboto.lineHeight.LH1};
+    text-transform: uppercase;
   `}
 `;

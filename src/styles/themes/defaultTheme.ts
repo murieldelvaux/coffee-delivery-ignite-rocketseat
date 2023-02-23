@@ -43,7 +43,7 @@ const defaultTheme = {
       },
     },
     Baloo: {
-      family: "Baloo",
+      fontFamily: "Baloo 2",
       bold: 700,
       extraBold: 800,
       lineHeight: "130%",
