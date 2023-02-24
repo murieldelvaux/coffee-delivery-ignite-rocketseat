@@ -4,10 +4,12 @@ import { InputCoffeeComponent, InputCoffeeWrapper } from "./Input.styles";
 interface InputCoffeeProps extends InputHTMLAttributes<HTMLInputElement> {
   placeholder: string;
   optionalPlaceholder?: string;
+  width?: string;
 }
 function InputCoffee({
   placeholder = "Label",
   optionalPlaceholder = "Opcional",
+  width,
 }: InputCoffeeProps) {
   const [inputOnFocus, setInputOnFocus] = useState(false);
   const [inputValue, setInputValue] = useState("");
@@ -16,6 +18,7 @@ function InputCoffee({
     <InputCoffeeWrapper
       inputFocus={inputOnFocus ? true : false}
       optionalPlaceholder={inputValue ? true : false}
+      width={width}
     >
       <InputCoffeeComponent
         placeholder={placeholder}
