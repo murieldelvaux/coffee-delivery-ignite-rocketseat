@@ -3,11 +3,12 @@ import styled, { css } from "styled-components";
 interface InputCoffeeWrapperProps {
   inputFocus: boolean;
   optionalPlaceholder: boolean;
+  width?: string;
 }
 export const InputCoffeeWrapper = styled.div<InputCoffeeWrapperProps>`
-  ${({ theme, inputFocus, optionalPlaceholder }) => css`
+  ${({ theme, inputFocus, width }) => css`
     display: flex;
-    width: 100%;
+    width: ${width};
     height: 2.625rem;
     align-items: center;
     border-radius: 0.25rem;
