@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { SelectItemsButton, SelectItemsWrapper } from "./Select.styles";
 
-export function SelectItems() {
-  const [numberItem, setNumberItem] = useState(0);
+interface SelectItemsProps {
+  itemsAmount: number;
+}
+export function SelectItems({ itemsAmount }: SelectItemsProps) {
+  const [numberItem, setNumberItem] = useState(itemsAmount);
+
   function handleChangeNumberItem(op: string) {
-    console.log(op);
     op === "+"
       ? setNumberItem(numberItem + 1)
       : numberItem > 0

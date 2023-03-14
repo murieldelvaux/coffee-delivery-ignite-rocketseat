@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { DefaultLayout } from "./layouts/DefaultLayout/DefaultLayout";
 import { Checkout } from "./pages/Checkout/Checkout";
 import { Home } from "./pages/Home/Home";
+import { Order } from "./pages/Order/Order";
 
 export function Router() {
   return (
@@ -11,6 +12,7 @@ export function Router() {
         {/* As rotas vão se somando, se aqui fosse /admin, para acessar History eu precisaria: /admin/history */}
         <Route path="/" element={<Home />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/order" element={<Order />} />
       </Route>
     </Routes>
   );

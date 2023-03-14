@@ -13,7 +13,7 @@ function InputCoffee({
 }: InputCoffeeProps) {
   const [inputOnFocus, setInputOnFocus] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  console.log(typeof inputValue);
+
   return (
     <InputCoffeeWrapper
       inputFocus={inputOnFocus ? true : false}

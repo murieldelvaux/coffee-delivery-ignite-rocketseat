@@ -121,7 +121,7 @@ export const IntroImage = styled.div`
     align-items: center;
     width: 27rem;
     height: 22.5rem;
-    background-image: url("../../../public/Image/ImageCoffee.png");
+    background-image: url("/ImageCoffee.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;

@@ -6,6 +6,7 @@ export const CheckoutContainer = styled.div`
   width: 100%;
   padding: 2rem 10rem;
   gap: 2rem;
+  justify-content: space-between;
   @media (max-width: 800px) {
     align-items: center;
     justify-content: center;
@@ -31,7 +32,49 @@ export const CheckoutWrapper = styled.div`
 `;
 export const CheckoutWrapperCart = styled.div`
   display: flex;
+  max-width: 448px;
   flex-direction: column;
   gap: 0.75rem;
-  width: 28%;
+  @media (max-width: 800px) {
+    width: 100%;
+  }
+`;
+
+export const CheckoutCartSeparator = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    width: 100%;
+    border: 1px solid ${theme.color.grey.grey400};
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  `}
+`;
+export const CheckoutCartValuesWrapper = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    line-height: 130%;
+    margin-bottom: 0.75rem;
+    h4 {
+      font-family: "Roboto";
+      font-size: ${theme.fonts.Roboto.size.l};
+      font-weight: ${theme.fonts.Roboto.bold};
+      color: ${theme.color.grey.grey800};
+      margin-bottom: 0.75rem;
+    }
+    h6 {
+      font-family: "Roboto";
+      font-size: ${theme.fonts.Roboto.size.xs};
+      font-weight: ${theme.fonts.Roboto.regular};
+      color: ${theme.color.grey.grey700};
+    }
+    p {
+      font-family: "Roboto";
+      font-size: ${theme.fonts.Roboto.size.sm};
+      font-weight: ${theme.fonts.Roboto.regular};
+      color: ${theme.color.grey.grey700};
+    }
+  `}
 `;

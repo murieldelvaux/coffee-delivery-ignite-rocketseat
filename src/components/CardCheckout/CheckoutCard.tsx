@@ -14,6 +14,7 @@ interface ICheckoutCardProps {
   children?: ReactNode;
   header?: boolean;
   colorIcon?: string;
+  variant?: "default" | "cart";
 }
 export function CheckoutCard({
   icon,
@@ -22,9 +23,10 @@ export function CheckoutCard({
   children,
   header,
   colorIcon,
+  variant = "default",
 }: ICheckoutCardProps) {
   return (
-    <CheckoutCardWrapper>
+    <CheckoutCardWrapper variant={variant}>
       <CheckoutCardHeader colorIcon={colorIcon}>
         {icon}
         {header ? (

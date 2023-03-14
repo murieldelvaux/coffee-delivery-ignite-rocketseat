@@ -19,7 +19,7 @@ export const SelectOptionWrapper = styled.button`
     }
     p {
       font-family: ${theme.fonts.Roboto.family};
-      font-size: ${theme.fonts.Roboto.size.sm};
+      font-size: ${theme.fonts.Roboto.size.xxs};
       font-weight: ${theme.fonts.Roboto.regular};
       color: ${theme.color.grey.grey700};
     }

@@ -1,5 +1,5 @@
-import { ShoppingCartSimple, Tag, Trash } from "phosphor-react";
-import { ButtonHTMLAttributes, DetailedHTMLProps, ReactNode } from "react";
+import { ShoppingCartSimple, Trash } from "phosphor-react";
+import { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
 import ButtonCoffee from "../Button/Button";
 import { SelectItems } from "../Select/SelectItem/Select";
 import {
@@ -20,25 +20,12 @@ interface ICardCoffeeProps
     ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
   > {
-  typeCoffee?:
-    | "Americano"
-    | "Árabe"
-    | "Café com Leite"
-    | "Café Gelado"
-    | "Cappuccino"
-    | "Chocolate Quente"
-    | "Cubano"
-    | "Expresso Cremoso"
-    | "Expresso"
-    | "Havaiano"
-    | "Irlandês"
-    | "Latte"
-    | "Macchiato"
-    | "Mochaccino";
+  typeCoffee?: string;
   variant?: "Catálogo" | "Carrinho";
   title?: string;
   description?: string;
   valueCoffee?: number;
+  amountCoffee?: number;
   tagCoffee?: Array<string>;
 }
 
@@ -49,14 +36,12 @@ function CardCoffee({
   description,
   valueCoffee,
   tagCoffee,
+  amountCoffee = 1,
   ...props
 }: ICardCoffeeProps) {
   return (
     <CardWrapper variant={variant}>
-      <ImageCoffee
-        variant={variant}
-        src={`../../../public/Image/Type=${typeCoffee}.png`}
-      />
+      <ImageCoffee variant={variant} src={`/Type=${typeCoffee}.png`} />
       <CardContent variant={variant}>
         {variant === "Carrinho" ? (
           ""
@@ -78,14 +63,17 @@ function CardCoffee({
                 R$<span>{valueCoffee?.toPrecision(3).replace(".", ",")}</span>
               </CardValueCoffe>
             )}
-            <SelectItems />
+            <SelectItems itemsAmount={amountCoffee} />
             {variant === "Carrinho" ? (
               <ButtonCoffee variant={"remove"}>
                 <Trash size={16} />
                 Remover
               </ButtonCoffee>
             ) : (
-              <ButtonCoffee variant={"icon"}>
+              <ButtonCoffee
+                variant={"icon"}
+                onClick={() => console.log("clcik")}
+              >
                 <ShoppingCartSimple size={24} />
               </ButtonCoffee>
             )}

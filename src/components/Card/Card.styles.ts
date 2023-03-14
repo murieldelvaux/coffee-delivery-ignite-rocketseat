@@ -7,7 +7,7 @@ interface ICardContent {
 export const CardWrapper = styled.div<ICardContent>`
   ${({ theme, variant }) => css`
     display: flex;
-
+    flex-wrap: wrap;
     background-color: ${theme.color.grey.grey200};
     ${variant == "Catálogo" &&
     css`
@@ -23,8 +23,16 @@ export const CardWrapper = styled.div<ICardContent>`
       justify-content: center;
       align-items: flex-start;
       border-radius: 6px;
-      width: 368px;
+      width:100%
+      min-width: 368px;
       height: 80px;
+      @media (max-width: 450px) {
+        justify-content: center;
+        align-items: center;
+        margin-bottom:1rem;
+        height: 120px;
+        
+      }
     `}
   `}
 `;
@@ -46,6 +54,10 @@ export const CardContent = styled.div<ICardContent>`
       justify-content: center;
       margin-left: 20px;
       margin-right: 50px;
+      @media (max-width: 450px) {
+        justify-content: center;
+        align-items: center;
+      }
     `};
   `}
 `;
@@ -126,6 +138,12 @@ export const CardValueCoffe = styled.p<ICardContent>`
       font-family: ${theme.fonts.Roboto.family};
       font-weight: ${theme.fonts.Roboto.bold};
       font-size: 16px;
+      @media (max-width: 450px) {
+        display: flex;
+        width: 80%;
+        justify-content: center;
+        align-items: center;
+      }
     `};
   `}
 `;

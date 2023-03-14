@@ -1,4 +1,5 @@
 import { MapPin, ShoppingCartSimple } from "phosphor-react";
+import { Link, useNavigate } from "react-router-dom";
 import ButtonCoffee from "../../components/Button/Button";
 import CoffeeDeliveryIcon from "../../components/Icons/CoffeeDelivery";
 import {
@@ -8,15 +9,22 @@ import {
 } from "./Header.styles";
 
 export function Header() {
+  const navigate = useNavigate();
   return (
     <HeaderWrapper>
-      <CoffeeDeliveryIcon />
+      <Link to={"/"}>
+        <CoffeeDeliveryIcon />
+      </Link>
       <ActionsHeader>
         <ActionsLocationButton>
           <MapPin size={22} />
           <p>Porto Alegre, RS</p>
         </ActionsLocationButton>
-        <ButtonCoffee variant={"cart"} number={0}>
+        <ButtonCoffee
+          variant={"cart"}
+          number={0}
+          onClick={() => navigate("/checkout")}
+        >
           <ShoppingCartSimple size={24} />
         </ButtonCoffee>
       </ActionsHeader>
