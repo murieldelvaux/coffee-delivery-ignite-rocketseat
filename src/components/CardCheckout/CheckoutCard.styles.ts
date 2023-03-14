@@ -1,27 +1,29 @@
 import styled, { css } from "styled-components";
 
-export const CheckoutCardWrapper = styled.div`
-  ${({ theme }) => css`
+interface ICheckoutCardWrapperProps {
+  variant?: "default" | "cart";
+}
+
+export const CheckoutCardWrapper = styled.div<ICheckoutCardWrapperProps>`
+  ${({ theme, variant }) => css`
     display: flex;
     flex-direction: column;
     background-color: ${theme.color.grey.grey200};
     padding: 2.5rem;
     gap: 2rem;
-    border-radius: 0.375rem;
+    border-radius: ${variant === "default" ? "0.375rem" : "6px 44px"};
   `}
 `;
 export const CheckoutCardElements = styled.div`
-  ${({ theme }) => css`
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  `}
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 `;
 interface ICheckoutCardHeaderProps {
   colorIcon?: string;
 }
 export const CheckoutCardHeader = styled.div<ICheckoutCardHeaderProps>`
-  ${({ theme, colorIcon }) => css`
+  ${({ colorIcon }) => css`
     display: flex;
 
     gap: 0.5rem;

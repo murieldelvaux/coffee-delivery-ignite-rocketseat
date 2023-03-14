@@ -1,14 +1,28 @@
-import { MapPin, MapPinLine } from "phosphor-react";
-import InputCoffee from "../../components/Input/Input";
-import { CheckoutCard } from "./Card/CheckoutCard";
 import {
+  Bank,
+  CreditCard,
+  CurrencyDollar,
+  MapPin,
+  MapPinLine,
+  Money,
+} from "phosphor-react";
+import InputCoffee from "../../components/Input/Input";
+import { CheckoutCard } from "../../components/CardCheckout/CheckoutCard";
+import {
+  CheckoutCartSeparator,
+  CheckoutCartValuesWrapper,
   CheckoutContainer,
   CheckoutTitles,
   CheckoutWrapper,
   CheckoutWrapperCart,
 } from "./Checkout.styles";
+import { SelectOption } from "../../components/Select/SelectOption/SelectOption";
+import CardCoffee from "../../components/Card/Card";
+import ButtonCoffee from "../../components/Button/Button";
+import { useNavigate } from "react-router-dom";
 
 export function Checkout() {
+  const navigate = useNavigate();
   return (
     <CheckoutContainer>
       <CheckoutWrapper>
@@ -54,39 +68,55 @@ export function Checkout() {
         </CheckoutCard>
         <CheckoutCard
           header={true}
-          title={"Endereço de Entrega"}
-          description={"Informe o endereço onde deseja receber seu pedido"}
-          icon={<MapPinLine />}
-          colorIcon={"#C47F17"}
+          title={"Pagamento"}
+          description={
+            "O pagamento é feito na entrega. Escolha a forma que deseja pagar"
+          }
+          icon={<CurrencyDollar />}
+          colorIcon={"#8047F8"}
         >
-          <InputCoffee placeholder={"CEP"} />
-          <InputCoffee placeholder={"CEP"} />
-          <InputCoffee placeholder={"CEP"} />
+          <SelectOption children={"Cartão de Crédito"} icon={<CreditCard />} />
+          <SelectOption children={"Cartão de Débito"} icon={<Bank />} />
+          <SelectOption children={"Dinheiro"} icon={<Money />} />
         </CheckoutCard>
       </CheckoutWrapper>
       <CheckoutWrapperCart>
         <CheckoutTitles>Cafés selecionados</CheckoutTitles>
+
         <CheckoutCard
           header={true}
           title={"Endereço de Entrega"}
           description={"Informe o endereço onde deseja receber seu pedido"}
           icon={<MapPinLine />}
           colorIcon={"#C47F17"}
+          variant={"cart"}
         >
-          <InputCoffee placeholder={"CEP"} width={"30%"} />
-          <InputCoffee placeholder={"CEP"} />
-          <InputCoffee placeholder={"CEP"} />
-        </CheckoutCard>
-        <CheckoutCard
-          header={true}
-          title={"Endereço de Entrega"}
-          description={"Informe o endereço onde deseja receber seu pedido"}
-          icon={<MapPinLine />}
-          colorIcon={"#C47F17"}
-        >
-          <InputCoffee placeholder={"CEP"} />
-          <InputCoffee placeholder={"CEP"} />
-          <InputCoffee placeholder={"CEP"} />
+          <CardCoffee
+            title="Expresso Tradicional"
+            variant="Carrinho"
+            typeCoffee="Expresso"
+            valueCoffee={9.9}
+          />
+          <CheckoutCartSeparator />
+          <CheckoutCartValuesWrapper>
+            <h6>Total de itens</h6>
+            <p>R$ 29,70</p>
+          </CheckoutCartValuesWrapper>
+          <CheckoutCartValuesWrapper>
+            <h6>Entrega</h6>
+            <p>R$ 3,50</p>
+          </CheckoutCartValuesWrapper>
+          <CheckoutCartValuesWrapper>
+            <h4>Total</h4>
+            <h4>R$ 33,20</h4>
+          </CheckoutCartValuesWrapper>
+          <ButtonCoffee
+            variant={"default"}
+            width={"100%"}
+            onClick={() => navigate("/order")}
+          >
+            Confirmar Pedido
+          </ButtonCoffee>
         </CheckoutCard>
       </CheckoutWrapperCart>
     </CheckoutContainer>

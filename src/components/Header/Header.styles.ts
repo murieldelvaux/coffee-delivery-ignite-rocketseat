@@ -12,6 +12,9 @@ export const HeaderWrapper = styled.header`
   @media (max-width: 340px) {
     gap: 1rem;
   }
+  svg {
+    cursor: pointer;
+  }
 `;
 
 export const ActionsHeader = styled.div`

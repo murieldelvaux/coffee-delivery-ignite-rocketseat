@@ -3,22 +3,23 @@ import styled, { css } from "styled-components";
 interface IButtonWrapper {
   color: string;
   variant: "default" | "icon" | "remove" | "cart";
+  width?: string;
 }
 
 export const ButtonWrapper = styled.button<IButtonWrapper>`
-  ${({ variant, theme }) => css`
+  ${({ variant, theme, width }) => css`
     display: flex;
     align-items: center;
     justify-content: center;
     border: none;
     cursor: pointer;
     border-radius: 6px;
-
+    width: ${width};
     ${variant == "default" &&
     css`
       background-color: ${theme.color.yellow.normal};
-      color: ${theme.color.white};
       outline: none;
+      color: ${theme.color.white};
       padding: 12px 8px;
       min-width: 132px;
       gap: 4px;
@@ -82,10 +83,9 @@ export const ButtonWrapper = styled.button<IButtonWrapper>`
       background-color: ${theme.color.yellow.light};
       color: ${theme.color.yellow.dark};
       outline: none;
-      width: 38px;
-      height: 38px;
+      min-width: 45px;
       padding: 8px;
-      min-width: 38px;
+      min-height: 45px;
       gap: 4px;
       font-family: ${theme.fonts.Roboto.family};
       font-weight: ${theme.fonts.Roboto.bold};
@@ -129,32 +129,3 @@ export const ButtonContentCartNumber = styled.div`
     align-items: flex-end;
   `}
 `;
-
-/* 
-
- ${variant == "outlined" &&
-    css`
-      background-color: transparent;
-      color: ${disabled ? "gray" : color};
-      outline: 1px solid ${disabled ? "gray" : color};
-      border-radius: 8px;
-      padding: 12px 76px;
-    `}
-
-    ${variant == "textWithUnderline" &&
-    css`
-      background-color: transparent;
-      color: ${disabled ? "gray" : color};
-      outline: none;
-      padding: 0;
-      text-decoration: underline ${disabled ? "gray" : color}; ;
-    `}
-
-    ${variant == "text" &&
-    css`
-      background-color: transparent;
-      color: ${disabled ? "gray" : color};
-      outline: none;
-      padding: 0;
-    `}
-*/

@@ -14,6 +14,7 @@ interface IButtonCoffeeProps
   color?: string;
   variant: "default" | "icon" | "remove" | "cart";
   number?: number;
+  width?: string;
 }
 
 function ButtonCoffee({
@@ -22,9 +23,9 @@ function ButtonCoffee({
   color = "#DBAC2C",
   variant = "default",
   number,
+  width,
   ...props
 }: IButtonCoffeeProps) {
-  console.log(number);
   return variant === "cart" ? (
     <ButtonContentCartNumber>
       <ButtonCartNumber number={number}>
@@ -36,7 +37,7 @@ function ButtonCoffee({
       </ButtonWrapper>
     </ButtonContentCartNumber>
   ) : (
-    <ButtonWrapper color={color} variant={variant} {...props}>
+    <ButtonWrapper color={color} variant={variant} {...props} width={width}>
       {Icon}
       {props.children}
     </ButtonWrapper>

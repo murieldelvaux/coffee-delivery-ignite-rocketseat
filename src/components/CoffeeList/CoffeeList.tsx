@@ -1,15 +1,13 @@
-import CardCoffee from "../../../components/Card/Card";
+import CardCoffee from "../Card/Card";
 import {
   CoffeeListItems,
   CoffeeListTitle,
   CoffeeListWrapper,
 } from "./CoffeeList.styles";
-import CoffeeItems from "../../../CoffeeItems.json";
+import CoffeeItems from "../../CoffeeItems.json";
 export function CoffeeList() {
   const coffee = CoffeeItems;
-  coffee.map((val, i) => {
-    console.log(val, i);
-  });
+
   return (
     <CoffeeListWrapper>
       <CoffeeListTitle>Nossos cafés</CoffeeListTitle>
