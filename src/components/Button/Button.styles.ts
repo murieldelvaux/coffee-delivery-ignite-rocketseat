@@ -109,12 +109,13 @@ export const ButtonCartNumber = styled.div<IButtonCartNumberProps>`
     color: ${theme.color.white};
     border-radius: 100%;
     position: absolute;
-    margin-bottom: 1.7rem;
-    margin-left: 1.5rem;
+    margin-bottom: 2rem;
+    margin-left: 2rem;
     font-family: ${theme.fonts.Roboto.family};
     font-weight: ${theme.fonts.Roboto.bold};
     font-size: ${theme.fonts.Roboto.size.xxs};
     line-height: ${theme.fonts.Roboto.lineHeight.LH1};
+
     p {
       padding: 0px;
       margin-top: 0.125rem;

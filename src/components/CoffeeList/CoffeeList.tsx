@@ -5,6 +5,7 @@ import {
   CoffeeListWrapper,
 } from "./CoffeeList.styles";
 import CoffeeItems from "../../CoffeeItems.json";
+
 export function CoffeeList() {
   const coffee = CoffeeItems;
 
@@ -14,6 +15,7 @@ export function CoffeeList() {
       <CoffeeListItems>
         {coffee.map((val, i) => (
           <CardCoffee
+            key={val.title + val.valueCoffee}
             variant="Catálogo"
             title={val.title}
             description={val.description}

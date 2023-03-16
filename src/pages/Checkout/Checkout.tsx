@@ -20,9 +20,13 @@ import { SelectOption } from "../../components/Select/SelectOption/SelectOption"
 import CardCoffee from "../../components/Card/Card";
 import ButtonCoffee from "../../components/Button/Button";
 import { useNavigate } from "react-router-dom";
-
+import { useContext, useState } from "react";
+import { OrdersContext } from "../../contexts/OrderContext";
 export function Checkout() {
   const navigate = useNavigate();
+  const { orders, handleSumItemsAmount } = useContext(OrdersContext);
+  handleSumItemsAmount();
+  const deliveryRate = 4.0;
   return (
     <CheckoutContainer>
       <CheckoutWrapper>
@@ -80,31 +84,33 @@ export function Checkout() {
           <SelectOption children={"Dinheiro"} icon={<Money />} />
         </CheckoutCard>
       </CheckoutWrapper>
+
       <CheckoutWrapperCart>
         <CheckoutTitles>Cafés selecionados</CheckoutTitles>
 
-        <CheckoutCard
-          header={true}
-          title={"Endereço de Entrega"}
-          description={"Informe o endereço onde deseja receber seu pedido"}
-          icon={<MapPinLine />}
-          colorIcon={"#C47F17"}
-          variant={"cart"}
-        >
-          <CardCoffee
-            title="Expresso Tradicional"
-            variant="Carrinho"
-            typeCoffee="Expresso"
-            valueCoffee={9.9}
-          />
-          <CheckoutCartSeparator />
+        <CheckoutCard header={true}>
+          <div>
+            {orders.map((item) => (
+              <div>
+                <CardCoffee
+                  key={item.title}
+                  title={item.title}
+                  variant="Carrinho"
+                  typeCoffee={item.typeCoffee}
+                  valueCoffee={item.valueCoffee}
+                  amountCoffee={item.amountCoffee}
+                />
+                <CheckoutCartSeparator />
+              </div>
+            ))}
+          </div>
           <CheckoutCartValuesWrapper>
             <h6>Total de itens</h6>
             <p>R$ 29,70</p>
           </CheckoutCartValuesWrapper>
           <CheckoutCartValuesWrapper>
             <h6>Entrega</h6>
-            <p>R$ 3,50</p>
+            <p>R${deliveryRate}</p>
           </CheckoutCartValuesWrapper>
           <CheckoutCartValuesWrapper>
             <h4>Total</h4>
