@@ -1,5 +1,5 @@
 import { ShoppingCartSimple, Trash } from "phosphor-react";
-import { ButtonHTMLAttributes, DetailedHTMLProps } from "react";
+import { ButtonHTMLAttributes, DetailedHTMLProps, useState } from "react";
 import ButtonCoffee from "../Button/Button";
 import { SelectItems } from "../Select/SelectItem/Select";
 import {
@@ -14,17 +14,18 @@ import {
   TagCoffeeItem,
   TagCoffeeWrapper,
 } from "./Card.styles";
-
+import { useContext } from "react";
+import { Order, OrdersContext } from "../../contexts/OrderContext";
 interface ICardCoffeeProps
   extends DetailedHTMLProps<
     ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
   > {
-  typeCoffee?: string;
+  typeCoffee: string;
   variant?: "Catálogo" | "Carrinho";
-  title?: string;
+  title: string;
   description?: string;
-  valueCoffee?: number;
+  valueCoffee: number;
   amountCoffee?: number;
   tagCoffee?: Array<string>;
 }
@@ -39,6 +40,23 @@ function CardCoffee({
   amountCoffee = 1,
   ...props
 }: ICardCoffeeProps) {
+  const { createNewOrder, itemAmount } = useContext(OrdersContext);
+
+  function handleCreateNewOrder() {
+    const data = [
+      {
+        title: title,
+        valueCoffee: valueCoffee,
+        typeCoffee: typeCoffee,
+        amountCoffee: itemAmount,
+      },
+    ];
+    data.map((item, i, arr) => {
+      console.log(item, i, arr[i]);
+      createNewOrder(arr[i]);
+    });
+    console.log(data);
+  }
   return (
     <CardWrapper variant={variant}>
       <ImageCoffee variant={variant} src={`/Type=${typeCoffee}.png`} />
@@ -72,7 +90,7 @@ function CardCoffee({
             ) : (
               <ButtonCoffee
                 variant={"icon"}
-                onClick={() => console.log("clcik")}
+                onClick={(e) => handleCreateNewOrder()}
               >
                 <ShoppingCartSimple size={24} />
               </ButtonCoffee>

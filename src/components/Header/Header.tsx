@@ -7,9 +7,12 @@ import {
   ActionsLocationButton,
   HeaderWrapper,
 } from "./Header.styles";
+import { useContext, useState } from "react";
+import { OrdersContext } from "../../contexts/OrderContext";
 
 export function Header() {
   const navigate = useNavigate();
+  const { orders } = useContext(OrdersContext);
   return (
     <HeaderWrapper>
       <Link to={"/"}>
@@ -22,7 +25,7 @@ export function Header() {
         </ActionsLocationButton>
         <ButtonCoffee
           variant={"cart"}
-          number={0}
+          number={orders.length}
           onClick={() => navigate("/checkout")}
         >
           <ShoppingCartSimple size={24} />
